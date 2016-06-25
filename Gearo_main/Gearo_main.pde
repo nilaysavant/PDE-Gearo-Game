@@ -4,12 +4,12 @@
  *
  * Description : 2D game with some physics and my first game
  * 
- * Trial Changes #1
+ * 
  */
 
 
-// Game screen 1, 2, or 3
-int game_screen = 0;
+// screen 0, 1, or 2
+int screen = 0;
 
 float sw = width*height/pow(10,4) + 1.5; 
 //long init_time=0;
@@ -45,10 +45,12 @@ class Button
   {
     fill(218);
     stroke(141);
-    rect(x, y, w, h, 10);
+    rectMode(CENTER);
+    rect(x,y, w, h, 10);
     textAlign(CENTER, CENTER);
     fill(0);
-    text(label, x + (w / 2), y + (h / 2));
+    textSize((w+h)/10);
+    text(label, x, y);
   }
   
   boolean mouseIsOver() 
@@ -120,7 +122,7 @@ public void setup()
   world = new World();
   ground = new Ground();
   gearo = new Gearo();
-  start_button = new Button("START" , width/2, height/2, width/2, height/2);
+  start_button = new Button("START" , width/2, height/2, width/2, height/4);
   
   // Size of the window
   size(800, 800, P2D); 
@@ -305,8 +307,18 @@ void moveGearo()
   
 }
 
-public void draw() 
-{    
+void initScreen() //Initial Start Screen
+{
+ start_button.draw();
+ if (start_button.pressed())
+ {
+   screen = 1;
+ }
+  
+}
+
+void gameScreen() //Game Screen
+{
   background(255);
   stroke(0);
   noFill();
@@ -319,6 +331,30 @@ public void draw()
   //applyHorizontalvelocity();
   gearo.draw();
   ground.draw();
+  
+}
+
+void gameOverScreen() // Game Over Screen
+{
+  
+}
+
+public void draw() 
+{   
+  if (screen == 0)
+  {
+    initScreen();
+  }
+  else if (screen == 1)
+  {
+    gameScreen();
+  }
+  else if (screen == 2)
+  {
+    gameOverScreen();
+  }
+  
+  
  
   //if (frameCount % 10 == 0) println(frameRate);
 }
