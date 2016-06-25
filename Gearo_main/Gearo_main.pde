@@ -167,7 +167,43 @@ void keyReleased()
   }
   
 }
-
+//For Mouse
+void mousePressed()
+{
+  if (screen == 1)
+  {
+    if ( (mouseX < width/4) && (mouseY > height/4)) // if left side down pressed
+    {
+      backward = true;
+    }
+    else if ( (mouseX > (width - width/4)) && (mouseY > height/4)) // if right side down pressed
+    {
+      forward = true;
+    }
+    else if ( (mouseX > width/4) && (mouseX < (width - width/4)) && (mouseY > (height - height/4))) // if middle down pressed
+    {
+      jump = true;
+    }
+  }
+}
+void mouseReleased()
+{
+  if (screen == 1)
+  {
+    if ( (mouseX < width/4) && (mouseY > height/4)) // if left side down pressed
+    {
+      backward = false;
+    }
+    else if ( (mouseX > (width - width/4)) && (mouseY > height/4)) // if right side down pressed
+    {
+      forward = false;
+    }
+    else if ( (mouseX > width/4) && (mouseX < (width - width/4)) && (mouseY > (height - height/4))) // if middle down pressed
+    {
+      jump = false;
+    }
+  }
+}
 
 // For Gravity in world 
 void applyGravity()
