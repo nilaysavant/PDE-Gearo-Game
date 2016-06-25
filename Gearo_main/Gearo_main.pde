@@ -125,7 +125,7 @@ public void setup()
   start_button = new Button("START" , width/2, height/2, width/2, height/4);
   
   // Size of the window
-  size(800, 800, P2D); 
+  size(displayWidth, displayHeight, P2D); 
   
   // Initialise position of Gearo
   gearo.X = width/2; // center of screen
@@ -190,21 +190,12 @@ void mouseReleased()
 {
   if (screen == 1)
   {
-    if ( (mouseX < width/4) && (mouseY > height/4)) // if left side down pressed
-    {
-      backward = false;
-    }
-    else if ( (mouseX > (width - width/4)) && (mouseY > height/4)) // if right side down pressed
-    {
-      forward = false;
-    }
-    else if ( (mouseX > width/4) && (mouseX < (width - width/4)) && (mouseY > (height - height/4))) // if middle down pressed
-    {
-      jump = false;
-    }
+    backward = false;
+    forward = false;
+    jump = false;
   }
+   
 }
-
 // For Gravity in world 
 void applyGravity()
 {
