@@ -1,7 +1,0 @@
-cd Gearo #change to <project> dir
-hg add #add newly created files
-hg status #mercurial gives status of changes to be commited
-hg commit -u "Nilay Savant <nilayofficial@gmail.com>" -m "comment" #commit changes with username and comments
-drive push -hidden #push changes to google-drive <nilayofficial@gmail.com>
-
-
